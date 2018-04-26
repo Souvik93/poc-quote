@@ -1,0 +1,152 @@
+<html>
+
+
+<head>
+
+  <style>
+    p {
+      font-family: Lato;
+    }
+
+    .bg-div {
+      background-color: rgb(0, 176, 240);
+    }
+
+    .btn-danger {
+      color: #fff;
+      background-color: #dcd4d4;
+      border-color: #aea5a5;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+
+</head>
+
+
+
+<div class="container" ng-app="myApp">
+
+  <div class="row" ng-controller="myCtrl">
+
+    <div class="col-md=12 ">
+
+      <div class="row bg-div">
+
+        <div class="col-md-6 col-xs-4">
+
+          <span>
+            <h4>Ysurance</h4>
+          </span>
+
+        </div>
+
+        <div class="col-md-6 col-xs-8 ">
+          <span class="pull-right">
+            <h5>Your Dream, We Protect</h5>
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <p>
+            <b>Our
+              <i>Home Protect</i> quote for your home at this address:</b>
+          </p>
+          <p>{{responseObj.address}}</p>
+
+        </div>
+
+        <div class="col-md-12">
+
+          <p>
+            <b>Congratulations!! You have been approved for a bundle discount of </b>{{responseObj.discount}}% </p>
+
+        </div>
+
+        <div class="col-md-12">
+
+          <p>
+            <b>Premium:$ </b> {{responseObj.premium}}</p>
+
+
+        </div>
+
+        <div class="col-md-12">
+
+          <p>
+            <b>This is your quote number:</b> {{responseObj.qtnum}}
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <button class="btn btn-primary pull-left" (click)="sendMeDetails()">Send Details Now</button>
+
+      </div>
+      <div class="col-md-6">
+
+        <button class="btn btn-danger pull-left" (click)="notInterested()"> Not Interested </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+  var app = angular.module('myApp', []);
+
+  app.controller('myCtrl', function ($scope) {
+
+    fetchDetails();
+
+    fetchDetails()
+    {
+      $http({
+        url: '/getDetails',
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+
+      })
+        .then(function success(response) {
+          $scope.responseObj = response.data;
+          console.log($scope.mySuccess);
+
+        },
+          function myDelete(response) {
+            $scope.myfailure = response;
+
+          })
+    }
+
+
+  })
+
+
+
+</script>
+
+
+</html>
