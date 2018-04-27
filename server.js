@@ -81,7 +81,7 @@ console.log(body.premium);
   responseObj.value=value;
   responseObj.qtnum=responseText.qtnum;
   responseObj.premium=responseText.premium;
-  responseObject.discount=responseText.discount;
+  responseObj.discount=responseText.discount;
 
      res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
