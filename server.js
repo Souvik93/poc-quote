@@ -72,7 +72,7 @@ request(options, function (error, response, body) {
   console.log(body);
 
 console.log("Chk Chk Chk");
-console(body.premium);
+console.log(body.premium);
 
 
   responseObj.address=address;
