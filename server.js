@@ -68,19 +68,20 @@ app.get('/test', (req, res) => {
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
-  //responseText = JSON.parse(body);
+  responseText = JSON.parse(body);
   console.log(body);
 
 console.log("Chk Chk Chk");
+console(body.premium);
 
 
   responseObj.address=address;
   responseObj.area=builtarea;
   responseObj.fbid=fbid;
   responseObj.value=value;
-  responseObj.qtnum=body.qtnum;
-  responseObj.premium=body.premium;
-  responseObject.discount=body.discount;
+  responseObj.qtnum=responseText.qtnum;
+  responseObj.premium=responseText.premium;
+  responseObject.discount=responseText.discount;
 
      res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
