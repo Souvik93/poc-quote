@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 
    // res.sendFile(path.join(__dirname, 'dist/index.html'));
    res.send({"Status": "Failed.. Unable to classify VINss"});
-  
+
 
 });
 
@@ -61,8 +61,8 @@ app.get('/test', (req, res) => {
 
     var options = { method: 'GET',
   url: 'https://capyi.herokuapp.com/services/hq',
-  qs: { fbid: fbid, area: builtarea, value: value },
-  headers: 
+  qs: { fbid: fbid, builtarea: builtarea, value: value },
+  headers:
    { 'postman-token': 'b5a521c0-ee33-00e0-b6c9-63e84c7c8bfa',
      'cache-control': 'no-cache' } };
 
@@ -70,7 +70,10 @@ request(options, function (error, response, body) {
   if (error) throw new Error(error);
   //responseText = JSON.parse(body);
   console.log(body);
-  
+
+console.log("Chk Chk Chk");
+
+
   responseObj.address=address;
   responseObj.area=builtarea;
   responseObj.fbid=fbid;
@@ -78,18 +81,21 @@ request(options, function (error, response, body) {
   responseObj.qtnum=body.qtnum;
   responseObj.premium=body.premium;
   responseObject.discount=body.discount;
+
+     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-   res.sendFile(path.join(__dirname, 'dist/index.html'));
+
 
 });
 
 app.get('/getDetails', (req, res) => {
 
-    console.log("Hi There!!!!!")
+    console.log("Hi There!!!!!");
+    console.log(responseObj)
 
-   res.send(responseObject);
-  
+   res.send(responseObj);
+
 
 });
 
