@@ -3,6 +3,12 @@
 
 <head>
 
+<title>
+
+  Quote Details
+
+</title>
+
   <style>
     p {
       font-family: Lato;
@@ -12,11 +18,24 @@
       background-color: rgb(0, 176, 240);
     }
 
-    .btn-danger {
-      color: #fff;
-      background-color: #dcd4d4;
-      border-color: #aea5a5;
+    .btn-primary
+    {
+      background-color: rgb(0, 176, 240) !important;
+      border-color: rgb(0, 176, 240) !important;
     }
+
+    .btn-danger {
+      color: black;
+      background-color: #dcd4d4 !important;
+      border-color: #dcd4d4 !important;
+    }
+    
+    .large-text
+    {
+      color:rgb(0, 176, 240);
+      font-size: 16px;
+    }
+
   </style>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -60,7 +79,7 @@
       </div>
 
 
-      <div class="row">
+      <div class="row text-center">
 
         <div class="col-md-12">
 
@@ -68,21 +87,21 @@
             <b>Our
               <i>Home Protect</i> quote for your home at this address:</b>
           </p>
-          <p>{{responseObj.address}}</p>
+          <h5><address>{{responseObj.address}}</address></h5>
 
         </div>
 
         <div class="col-md-12">
 
           <p>
-            <b>Congratulations!! You have been approved for a bundle discount of </b>{{responseObj.discount}}% </p>
+            Congratulations!! You have been approved for a bundle discount of <b>{{responseObj.discount}}%</b> </p>
 
         </div>
 
         <div class="col-md-12">
 
           <p>
-            <b>Premium:$ </b> {{responseObj.premium}}</p>
+              Premium:$ <b class="large-text"> {{responseObj.premium}} </b> /year </p>
 
 
         </div>
@@ -90,14 +109,14 @@
         <div class="col-md-12">
 
           <p>
-            <b>This is your quote number:</b> {{responseObj.qtnum}}
+              This is your quote number: <b> {{responseObj.qtnum}}</b> 
         </div>
 
       </div>
 
       <div class="col-md-6">
 
-        <button class="btn btn-primary pull-left" (click)="sendMeDetails()">Send Details Now</button>
+        <button class="btn btn-primary pull-right" (click)="sendMeDetails()">Send Details Now</button>
 
       </div>
       <div class="col-md-6">
